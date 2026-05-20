@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Corrida Mateus — Circuito 2026</title>
+<script>
+  /* In the preview sandbox, sub-resource requests may need the page's ?t=
+     token appended. We install a global 'error' listener that retries any
+     failed <img> with the token once. CSS background images are applied via
+     JS at the bottom of the document. In production hosting, neither is
+     needed — relative URLs just work. */
+  (function () {
+    var tok = new URLSearchParams(location.search).get('t') || '';
+    var suffix = tok ? '?t=' + encodeURIComponent(tok) : '';
+    window.__ASSET_SUFFIX = suffix;
+    if (!suffix) return;
+    document.addEventListener('error', function (e) {
+      var t = e.target;
+      if (
+        t && t.tagName === 'IMG' && !t.dataset.retried &&
+        t.src && t.src.indexOf('?t=') === -1
+      ) {
+        t.dataset.retried = '1';
+        var sep = t.src.indexOf('?') === -1 ? '?' : '&';
+        t.src = t.src + sep + 't=' + encodeURIComponent(tok);
+      }
+    }, true);
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="topbar" data-screen-label="Header">
+    <nav class="nav" aria-label="Primária">
+      <a href="#informações">INFORMAÇÕES</a>
+      <a href="#kit">KIT</a>
+      <a href="#galeria">GALERIA</a>
+      <a href="#regulamento">REGULAMENTO</a>
+    </nav>
+  </header>
+
+  <section class="hero" data-screen-label="Hero">
+    <div class="hero-wrap">
+      <div class="hero-runner">
+        <img data-img="assets/composicao.png" alt="Atleta correndo" />
+      </div>
+      <div class="hero-right">
+        <img class="hero-title-img" data-img="assets/titulo.png" alt="40 anos de história. 7 cidades conectadas. Um só coração batendo no ritmo da corrida!" />
+        <div class="logo-block" aria-label="Corrida Mateus — Circuito 2026">
+          <img data-img="assets/selos.png" alt="Corrida Mateus — Circuito 2026" />
+        </div>
+        <img class="hero-idealizador" data-img="assets/idealizador.png" alt="Idealização: Grupo Mateus 40 anos" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-red" id="kit" data-screen-label="Kit + Seletor de Cidade">
+    <div class="kit-row">
+      <div class="kit-card">
+        <img data-img="assets/camisa.png" alt="Kit do corredor: camisa, medalha e número de peito" />
+      </div>
+
+      <aside class="city-aside" aria-label="Selecione sua cidade">
+        <div class="label">SELECIONE SUA CIDADE</div>
+
+        <div class="city-panel">
+          <button class="city-current" type="button" onclick="openCity('Aracaju')">
+            <span class="arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6V6z"/></svg>
+            </span>
+            <span>ARACAJÚ</span>
+          </button>
+
+          <ul class="city-list">
+            <li><button type="button" disabled>
+              <span class="bag" aria-hidden="true"><span>EM BREVE</span></span>
+              SALVADOR
+            </button></li>
+            <li><button type="button" disabled>
+              <span class="bag" aria-hidden="true"><span>EM BREVE</span></span>
+              BELÉM
+            </button></li>
+            <li><button type="button" disabled>
+              <span class="bag" aria-hidden="true"><span>EM BREVE</span></span>
+              TERESINA
+            </button></li>
+            <li><button type="button" disabled>
+              <span class="bag" aria-hidden="true"><span>EM BREVE</span></span>
+              SÃO LUÍS
+            </button></li>
+            <li><button type="button" disabled>
+              <span class="bag" aria-hidden="true"><span>EM BREVE</span></span>
+              BALSAS
+            </button></li>
+            <li><button type="button" disabled>
+              <span class="bag" aria-hidden="true"><span>EM BREVE</span></span>
+              FORTALEZA
+            </button></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="story" id="informacoes" data-screen-label="História">
+    <div class="story-bg" aria-hidden="true">
+      <img data-img="assets/bg-coracao.png" alt="" />
+    </div>
+    <div class="story-wrap">
+      <div class="story-text">
+        <p>Há 40 anos, nossa história começou com um sonho no interior do Maranhão. Hoje, como a terceira maior rede varejista do Brasil, sabemos que cada conquista só foi possível porque caminhamos lado a lado com você.</p>
+        <p>Para celebrar essas quatro décadas de parceria e confiança, queremos correr juntos!</p>
+        <p>O Circuito Mateus vai movimentar 7 cidades, conectadas pela energia do esporte e pelo orgulho da nossa trajetória.</p>
+      </div>
+      <div class="story-headline">
+        <img data-img="assets/txt2.png" alt="Afinal, somos um só coração! Venha fazer parte desse marco." />
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="galeria" data-screen-label="Galeria">
+
+    <!-- ROW 1 — scrolls right → left -->
+    <div class="marquee" style="--marquee-duration: 70s">
+      <div class="marquee-track">
+        <!-- First set -->
+        <div class="mslide s"><img data-img="assets/photos/CORRIDAMATEUS-17.jpg" alt="Foto da Corrida Mateus" /></div>
+        <div class="mslide l"><img data-img="assets/photos/CORRIDAMATEUS-34.jpg" alt="Foto da Corrida Mateus" /></div>
+        <div class="mslide m"><img data-img="assets/photos/CORRIDAMATEUS-55.jpg" alt="Foto da Corrida Mateus" /></div>
+        <div class="mslide xl"><img data-img="assets/photos/CORRIDAMATEUS-92.jpg" alt="Foto da Corrida Mateus" /></div>
+        <div class="mslide s"><img data-img="assets/photos/CORRIDAMATEUS-106.jpg" alt="Foto da Corrida Mateus" /></div>
+        <div class="mslide m"><img data-img="assets/photos/CORRIDAMATEUS-136.jpg" alt="Foto da Corrida Mateus" /></div>
+        <!-- Duplicate (required for seamless loop) -->
+        <div class="mslide s"><img data-img="assets/photos/CORRIDAMATEUS-17.jpg" alt="Foto da Corrida Mateus" /></div>
+        <div class="mslide l"><img data-img="assets/photos/CORRIDAMATEUS-34.jpg" alt="Foto da Corrida Mateus" /></div>
+        <div class="mslide m"><img data-img="assets/photos/CORRIDAMATEUS-55.jpg" alt="Foto da Corrida Mateus" /></div>
+        <div class="mslide xl"><img data-img="assets/photos/CORRIDAMATEUS-92.jpg" alt="Foto da Corrida Mateus" /></div>
+        <div class="mslide s"><img data-img="assets/photos/CORRIDAMATEUS-106.jpg" alt="Foto da Corrida Mateus" /></div>
+        <div class="mslide m"><img data-img="assets/photos/CORRIDAMATEUS-136.jpg" alt="Foto da Corrida Mateus" /></div>
+      </div>
+    </div>
+
+    <!-- ROW 2 — scrolls left → right -->
+    <div class="marquee reverse" style="--marquee-duration: 80s">
+      <div class="marquee-track">
+        <!-- First set -->
+        <div class="mslide xl"><img data-img="assets/photos/CORRIDAMATEUS-165.jpg" alt="Foto da Corrida Mateus" /></div>
+        <div class="mslide m"><img data-img="assets/photos/CORRIDAMATEUS-227.jpg" alt="Foto da Corrida Mateus" /></div>
+        <div class="mslide l"><img data-img="assets/photos/CORRIDAMATEUS-238.jpg" alt="Foto da Corrida Mateus" /></div>
+        <div class="mslide s"><img data-img="assets/photos/CORRIDAMATEUS-275.jpg" alt="Foto da Corrida Mateus" /></div>
+        <div class="mslide xl"><img data-img="assets/photos/CORRIDAMATEUS-295.jpg" alt="Foto da Corrida Mateus" /></div>
+        <!-- Duplicate -->
+        <div class="mslide xl"><img data-img="assets/photos/CORRIDAMATEUS-165.jpg" alt="Foto da Corrida Mateus" /></div>
+        <div class="mslide m"><img data-img="assets/photos/CORRIDAMATEUS-227.jpg" alt="Foto da Corrida Mateus" /></div>
+        <div class="mslide l"><img data-img="assets/photos/CORRIDAMATEUS-238.jpg" alt="Foto da Corrida Mateus" /></div>
+        <div class="mslide s"><img data-img="assets/photos/CORRIDAMATEUS-275.jpg" alt="Foto da Corrida Mateus" /></div>
+        <div class="mslide xl"><img data-img="assets/photos/CORRIDAMATEUS-295.jpg" alt="Foto da Corrida Mateus" /></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band" id="regulamento">
+    <button class="cta-btn" type="button" onclick="openRegulamento()">
+      Regulamento do Circuito
+    </button>
+  </section>
+
+  <section class="partners">
+    <div class="partners-inner">
+      <h3>Marcas Parceiras</h3>
+      <hr />
+      <div class="partner-row">
+        <div class="partner-slot">logo parceiro</div>
+        <div class="partner-slot">logo parceiro</div>
+        <div class="partner-slot">logo parceiro</div>
+        <div class="partner-slot">logo parceiro</div>
+      </div>
+      <hr />
+      <div class="partner-row">
+        <div class="partner-slot">logo parceiro</div>
+        <div class="partner-slot">logo parceiro</div>
+        <div class="partner-slot">logo parceiro</div>
+        <div class="partner-slot">logo parceiro</div>
+      </div>
+      <hr />
+    </div>
+  </section>
+
+  <div class="legal">
+    <span>© 2026 Circuito Corrida Mateus — Todos os direitos reservados.</span>
+    <span>Realização · Idealização · Produção esportiva</span>
+  </div>
+
+<script>
+  /* Populate <img data-img="..."> with src, appending the preview token if
+     present. Splitting src acquisition from markup keeps the browser from
+     issuing a first untokened request that fails 401 in the preview sandbox. */
+  (function () {
+    var suf = window.__ASSET_SUFFIX || '';
+    document.querySelectorAll('img[data-img]').forEach(function (img) {
+      img.src = img.dataset.img + suf;
+    });
+  })();
+
+  /* Apply the dotted-red texture bg to all red sections via JS, with token. */
+  (function () {
+    var suf = window.__ASSET_SUFFIX || '';
+    var bgUrl = 'assets/bg-vermelho.png' + suf;
+    document.querySelectorAll('.hero').forEach(function (el) {
+      el.style.backgroundImage = 'url("' + bgUrl + '")';
+      el.style.backgroundSize = 'cover';
+      el.style.backgroundPosition = 'center top';
+      el.style.backgroundRepeat = 'no-repeat';
+    });
+  })();
+
+  function getToken() { return new URLSearchParams(location.search).get('t'); }
+  function openWithToken(path, extra) {
+    var params = new URLSearchParams(extra || {});
+    var tok = getToken();
+    if (tok) params.set('t', tok);
+    var q = params.toString();
+    window.open(path + (q ? '?' + q : ''), '_blank', 'noopener');
+  }
+  function openCity(name) {
+    var slug = name.toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s+/g, '-');
+    openWithToken('cidade.html', { cidade: name, slug: slug });
+  }
+  function openRegulamento() {
+    window.open(
+      'https://docs.google.com/document/d/1vyiTW-yA6n1QUhxHi6Zz62eFKvEd8j-rzrjcPM2lE9c/edit?tab=t.0#heading=h.asb5441n9ddl',
+      '_blank',
+      'noopener'
+    );
+  }
+</script>
+</body>
+</html>
