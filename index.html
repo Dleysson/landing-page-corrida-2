@@ -45,10 +45,8 @@
   </header>
 
   <section class="hero" data-screen-label="Hero">
+    <img class="hero-composite" data-img="assets/BG-VERMELHO_CORREDOR.png" alt="Atleta correndo" />
     <div class="hero-wrap">
-      <div class="hero-runner">
-        <img data-img="assets/composicao.png" alt="Atleta correndo" />
-      </div>
       <div class="hero-right">
         <img class="hero-title-img" data-img="assets/titulo.png" alt="40 anos de história. 7 cidades conectadas. Um só coração batendo no ritmo da corrida!" />
         <div class="logo-block" aria-label="Corrida Mateus — Circuito 2026">
@@ -204,18 +202,6 @@
     var suf = window.__ASSET_SUFFIX || '';
     document.querySelectorAll('img[data-img]').forEach(function (img) {
       img.src = img.dataset.img + suf;
-    });
-  })();
-
-  /* Apply the dotted-red texture bg to all red sections via JS, with token. */
-  (function () {
-    var suf = window.__ASSET_SUFFIX || '';
-    var bgUrl = 'assets/bg-vermelho.png' + suf;
-    document.querySelectorAll('.hero').forEach(function (el) {
-      el.style.backgroundImage = 'url("' + bgUrl + '")';
-      el.style.backgroundSize = 'cover';
-      el.style.backgroundPosition = 'center top';
-      el.style.backgroundRepeat = 'no-repeat';
     });
   })();
 
