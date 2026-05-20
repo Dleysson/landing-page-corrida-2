@@ -618,10 +618,15 @@ button {
         font-size: 14px;
     }
     .hero-wrap {
-        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-        padding: 0 28px 60px;
+        grid-template-columns: 1fr;
+        min-height: 0;
+        padding: clamp(430px, 56vw, 580px) 28px 60px;
+    }
+    .hero-composite {
+        height: clamp(390px, 56vw, 560px);
     }
     .hero-right {
+        grid-column: 1;
         padding-top: 30px;
     }
     .logo-block img {
