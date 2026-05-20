@@ -106,7 +106,7 @@ button {
 .hero-runner {
     position: relative;
     margin-top: -110px;
-    margin-left: -64px;
+    margin-left: calc(-64px - max(0px, (100vw - 1440px) / 2));
     max-width: 660px;
 }
 .hero-runner img {
@@ -363,9 +363,8 @@ button {
 .story-bg {
     position: absolute;
     top: -270px;
-    left: 50%;
-    width: 1280px;
-    transform: translateX(-50%);
+    left: 0;
+    width: 100%;
     pointer-events: none;
     z-index: 0;
 }
@@ -622,7 +621,7 @@ button {
         padding: 0 28px 60px;
     }
     .hero-runner {
-        margin-left: -28px;
+        margin-left: calc(-28px - max(0px, (100vw - 1440px) / 2));
         max-width: 60%;
         margin-top: -60px;
     }
