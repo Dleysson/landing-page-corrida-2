@@ -214,6 +214,10 @@
     window.open(path + (q ? '?' + q : ''), '_blank', 'noopener');
   }
   function openCity(name) {
+    if (name === 'Aracaju') {
+      openWithToken('aracaju-landing.html');
+      return;
+    }
     var slug = name.toLowerCase()
       .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
       .replace(/\s+/g, '-');

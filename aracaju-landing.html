@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Etapa Aracaju — Corrida Mateus 2026</title>
+<script>
+  // Preview-auth: when the iframe URL has a ?t=... token, relative asset URLs lose it
+  // on resolution and 401. Reapply it to every asset URL we generate.
+  (function(){
+    var t = new URL(location.href).searchParams.get('t');
+    if (!t) return;
+    window.__withT = function(u){
+      try { var x = new URL(u, location.href); x.searchParams.set('t', t); return x.toString(); }
+      catch(e){ return u; }
+    };
+    // Rewrite <img src> and CSS url(...) at parse time via a MutationObserver.
+    function fix(el){
+      if (el.tagName === 'IMG' && el.getAttribute('src') && !el.src.includes('t=')){
+        el.src = window.__withT(el.getAttribute('src'));
+      }
+    }
+    new MutationObserver(function(muts){
+      muts.forEach(function(m){ m.addedNodes.forEach(function(n){
+        if (n.nodeType !== 1) return;
+        fix(n); n.querySelectorAll && n.querySelectorAll('img').forEach(fix);
+      });});
+    }).observe(document.documentElement, {childList:true, subtree:true});
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Saira:ital,wght@0,400;0,500;0,600;0,700;1,700;1,800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red: #E60012;
+    --red-deep: #C0000F;
+    --red-dark: #8B0008;
+    --blue: #1A1AFF;
+    --cream: #FBF5EE;
+    --cream-soft: #FFF6EE;
+    --pink-soft: #F7E6E4;
+    --pink-mid: #E89A95;
+    --text-on-red: #FFFFFF;
+    --ink: #2A1212;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#fff;color:var(--ink);font-family:'Saira',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;border:none;background:none;cursor:pointer;color:inherit}
+
+  .display{font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:900;letter-spacing:0.005em}
+  .display-up{text-transform:uppercase}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    gap:48px;
+    padding:18px 32px;
+    border-bottom:1px solid rgba(0,0,0,0.05);
+  }
+  .nav-links{display:flex;gap:48px;align-items:center}
+  .nav-links a{
+    font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:700;
+    text-transform:uppercase;letter-spacing:0.08em;font-size:14px;
+    color:#C0000F;position:relative;padding:6px 2px;
+    transition:color .2s;
+  }
+  .nav-links a.active{color:var(--red);}
+  .nav-links a.active::after{
+    content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--red);
+  }
+  .nav-links a:hover{color:var(--red)}
+  .nav-cta{
+    background:var(--blue);color:#fff;
+    font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:800;
+    text-transform:uppercase;letter-spacing:0.06em;font-size:14px;
+    padding:10px 22px;border-radius:999px;
+    box-shadow:0 4px 0 rgba(0,0,0,0.06);
+    transition:transform .15s, box-shadow .15s;
+  }
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(26,26,255,0.35)}
+  .nav-cta:active{transform:translateY(1px)}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    width:100%;
+    aspect-ratio: 1920 / 1080;
+    background:#E60012;
+    overflow:hidden;
+  }
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+
+  /* ---------- DATE BAR ---------- */
+  .date-bar{
+    background:var(--red-dark);
+    color:#fff;
+    padding:28px 24px;
+    text-align:center;
+    display:flex;align-items:center;justify-content:center;gap:36px;
+    flex-wrap:wrap;
+  }
+  .date-bar .item{
+    font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:800;
+    text-transform:uppercase;letter-spacing:0.06em;
+    font-size:clamp(20px,2.6vw,34px);
+  }
+  .date-bar .dot{
+    width:10px;height:10px;border-radius:50%;background:var(--red);display:inline-block;
+  }
+
+  /* ---------- KIT SECTION ---------- */
+  .section-kit{
+    position:relative;
+    background:#fff;
+    padding:90px 24px 100px;
+    overflow:hidden;
+  }
+  .section-kit::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image:var(--bg-dots-url, url(assets-aracaju/bg-dots.png));
+    background-size:cover;background-position:center;
+    opacity:0.6;pointer-events:none;
+  }
+  .kit-row{
+    position:relative;
+    max-width:1100px;margin:0 auto;
+    display:grid;grid-template-columns: 1fr 1fr;
+    gap:40px;align-items:center;
+  }
+  .kit-img{
+    display:flex;justify-content:center;
+  }
+  .kit-img img{
+    max-width:480px;width:100%;
+    filter:drop-shadow(0 25px 40px rgba(192,0,15,0.18));
+  }
+  .kit-buttons{
+    display:flex;flex-direction:column;gap:18px;
+    align-items:flex-start;
+    max-width:380px;
+  }
+  .price-pill{
+    width:100%;
+    background:#EFEFEF;border:2px solid #E5E5E5;border-radius:999px;
+    padding:14px 26px;display:flex;align-items:center;gap:18px;
+    font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:800;
+    text-transform:uppercase;letter-spacing:0.04em;
+    transition:transform .15s, box-shadow .15s, border-color .15s;
+    cursor:pointer;
+  }
+  .price-pill:hover{transform:translateY(-1px);border-color:#D5D5D5;box-shadow:0 8px 16px rgba(0,0,0,.06)}
+  .price-pill .km{color:#A5A5A5;font-size:24px;min-width:80px}
+  .price-pill .label{color:#1A1A1A;font-size:14px;opacity:.7;letter-spacing:0.06em}
+  .price-pill .price{color:var(--red);font-size:28px;margin-left:auto}
+  .price-pill.selected{border-color:var(--red);background:#fff;box-shadow:0 8px 22px rgba(230,0,18,0.18)}
+  .price-pill.selected .km{color:var(--red)}
+
+  .kit-cta{
+    margin-top:6px;
+    background:var(--blue);color:#fff;
+    border-radius:999px;
+    padding:16px 36px;
+    font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:800;
+    text-transform:uppercase;letter-spacing:0.08em;font-size:18px;
+    width:100%;
+    transition:transform .15s, box-shadow .15s, filter .15s;
+    box-shadow:0 6px 0 #0e0eb3;
+  }
+  .kit-cta:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(26,26,255,0.45)}
+  .kit-cta:active{transform:translateY(2px);box-shadow:0 3px 0 #0e0eb3}
+
+  /* ---------- STORY SECTION ---------- */
+  .section-story{
+    position:relative;
+    background:var(--red);
+    color:#fff;
+    overflow:hidden;
+    min-height:680px;
+  }
+  .story-bg{
+    position:absolute;inset:0;
+    background-image:var(--corredora-url, url(assets-aracaju/corredora.png));
+    background-size:cover;background-position:left center;
+    background-repeat:no-repeat;
+  }
+  .story-overlay{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(900px 600px at 80% 50%, rgba(230,0,18,0.0), rgba(230,0,18,0.0) 60%, rgba(230,0,18,0.0));
+  }
+  .story-content{
+    position:relative;
+    max-width:1180px;
+    margin:0 auto;
+    padding:80px 24px 80px;
+    display:grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap:60px;
+    align-items:center;
+    min-height:680px;
+  }
+  .story-text{
+    grid-column:2;
+    color:#fff;
+    max-width:480px;
+    margin-left:auto;
+    display:flex;flex-direction:column;gap:18px;
+  }
+  .story-text p{
+    font-family:'Saira',sans-serif;font-weight:500;
+    font-size:17px;line-height:1.5;
+    color:#FFE5E8;
+  }
+  .story-cta{
+    margin-top:18px;
+    font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:900;
+    text-transform:uppercase;letter-spacing:0.01em;font-size:30px;line-height:1.05;
+    color:#FFF1F1;
+    text-wrap:balance;
+  }
+  .story-selo{
+    margin-top:24px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .story-selo svg{display:block}
+  .story-selo .selo-mark{
+    width:170px;
+  }
+  .story-selo .selo-meta{
+    font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:700;
+    font-size:11px;letter-spacing:0.18em;text-transform:uppercase;
+    color:#FFD7DA;
+  }
+
+  /* ---------- COUNTDOWN ---------- */
+  .countdown{
+    background:#F5BABA;
+    color:var(--red-deep);
+    padding:48px 24px 56px;
+    text-align:center;
+  }
+  .countdown-label{
+    display:flex;align-items:center;justify-content:center;gap:18px;
+    font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:800;
+    letter-spacing:0.18em;font-size:14px;text-transform:uppercase;
+    color:var(--red-deep);
+    margin-bottom:10px;
+  }
+  .countdown-label::before, .countdown-label::after{
+    content:"";display:block;height:1px;background:rgba(192,0,15,0.4);width:120px;
+  }
+  .countdown-row{
+    display:flex;justify-content:center;gap:60px;flex-wrap:wrap;
+    margin-top:8px;
+  }
+  .cd-unit{display:flex;flex-direction:column;align-items:center;min-width:120px}
+  .cd-unit .label{
+    font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:700;
+    font-size:22px;letter-spacing:0.12em;text-transform:uppercase;
+    color:#fff;
+    text-shadow:0 1px 0 rgba(0,0,0,.05);
+  }
+  .cd-unit .value{
+    font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:900;
+    font-size:96px;line-height:1;color:#fff;
+    letter-spacing:-0.02em;
+    text-shadow:0 4px 0 rgba(192,0,15,0.2);
+  }
+
+  /* ---------- MAP SECTION ---------- */
+  .section-map{
+    background:#F1BFBA;
+    padding:80px 24px;
+  }
+  .map-wrap{
+    max-width:1180px;margin:0 auto;
+    display:grid;grid-template-columns: 1.4fr 1fr;
+    gap:40px;align-items:center;
+  }
+  .map-title{
+    font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:900;
+    font-size:clamp(80px,12vw,180px);
+    line-height:.95;color:var(--red);
+    letter-spacing:-0.01em;
+  }
+  .map-panel{
+    background:#FBF1EE;
+    border-radius:14px;
+    padding:32px 28px;
+    box-shadow:0 12px 30px rgba(192,0,15,0.08);
+  }
+  .map-tab{
+    display:inline-flex;align-items:center;justify-content:center;
+    background:#fff;border:2px solid var(--red);
+    color:var(--red);
+    border-radius:999px;
+    padding:8px 28px;
+    font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:800;
+    font-size:20px;letter-spacing:0.04em;text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .map-route{
+    font-family:'Saira',sans-serif;font-size:14px;color:#3A1A1A;
+    line-height:1.7;
+    padding-bottom:18px;border-bottom:1px solid rgba(192,0,15,0.18);
+    margin-bottom:24px;
+  }
+  .map-route:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+  .map-route .row{display:flex;gap:8px;align-items:flex-start;margin:6px 0}
+  .map-route .row strong{font-weight:700;color:#3A1A1A}
+  .map-loading{
+    display:inline-flex;align-items:center;gap:10px;
+    font-style:italic;color:#7a3a3a;font-weight:600;font-size:14px;
+    margin:8px 0;
+    text-transform:uppercase;letter-spacing:0.06em;
+  }
+  .spinner{
+    width:18px;height:18px;border-radius:50%;
+    border:2px solid rgba(192,0,15,0.25);
+    border-top-color:var(--red);
+    animation:spin 1s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* ---------- INFO PROVA ---------- */
+  .section-info{
+    background:#fff;
+    padding:80px 24px;
+  }
+  .info-card{
+    max-width:980px;margin:0 auto;
+    background:var(--red);
+    border-radius:24px;
+    padding:60px 48px;
+    text-align:center;
+    box-shadow:0 30px 80px rgba(192,0,15,0.25);
+    position:relative;
+    overflow:hidden;
+  }
+  .info-card::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(600px 320px at 50% -10%, rgba(255,255,255,0.08), transparent 60%);
+    pointer-events:none;
+  }
+  .info-title{
+    font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:900;
+    color:#FBF1EE;
+    font-size:clamp(36px,5vw,60px);
+    text-transform:uppercase;letter-spacing:0.01em;
+    margin-bottom:36px;
+  }
+  .info-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:18px;
+    max-width:760px;margin:0 auto;
+  }
+  .info-item{
+    background:#FBF1EE;
+    border-radius:999px;
+    padding:14px 24px;
+    display:flex;align-items:center;gap:14px;
+    color:var(--red);
+    font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:800;
+    text-transform:uppercase;letter-spacing:0.04em;font-size:18px;
+    cursor:pointer;
+    transition:transform .15s, box-shadow .15s, background .15s;
+    text-align:left;
+    width:100%;
+  }
+  .info-item:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(0,0,0,0.12)}
+  .info-item .chev{
+    width:0;height:0;
+    border-left:8px solid transparent;
+    border-right:8px solid transparent;
+    border-top:10px solid var(--red);
+    transition:transform .25s;
+    flex-shrink:0;
+  }
+  .info-item.open .chev{transform:rotate(-180deg)}
+  .info-item-wrap{display:flex;flex-direction:column;gap:0}
+  .info-panel{
+    grid-column:1 / -1;
+    background:#FBF1EE;
+    border-radius:20px;
+    padding:24px 28px;
+    text-align:left;
+    color:#3A1A1A;
+    font-family:'Saira',sans-serif;font-size:14px;line-height:1.6;
+    margin-top:-4px;
+    display:none;
+  }
+  .info-panel.open{display:block;animation:fadeIn .25s ease}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .info-panel h4{
+    font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:800;
+    color:var(--red);font-size:18px;text-transform:uppercase;letter-spacing:0.04em;
+    margin-bottom:6px;
+  }
+  .info-panel p{margin:6px 0}
+  .info-panel ul{margin:8px 0 8px 18px}
+  .info-cta{
+    margin-top:36px;
+    background:var(--blue);color:#fff;
+    border-radius:999px;padding:16px 50px;
+    font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:800;
+    text-transform:uppercase;letter-spacing:0.08em;font-size:18px;
+    transition:transform .15s, box-shadow .15s;
+    box-shadow:0 6px 0 #0e0eb3;
+  }
+  .info-cta:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(26,26,255,0.5)}
+  .info-cta:active{transform:translateY(2px);box-shadow:0 3px 0 #0e0eb3}
+
+  /* ---------- PARTNERS ---------- */
+  .section-partners{
+    background:#fff;
+    padding:60px 24px 80px;
+  }
+  .partners-wrap{
+    max-width:1180px;margin:0 auto;
+  }
+  .partners-title{
+    font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:700;
+    font-size:16px;letter-spacing:0.18em;text-transform:uppercase;color:#7a7a7a;
+    padding-bottom:14px;border-bottom:1px solid #E0E0E0;
+    margin-bottom:32px;
+  }
+  .partners-grid{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:20px;
+  }
+  .partner{
+    aspect-ratio:3/2;background:#F6F6F6;border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    color:#B0B0B0;font-size:12px;font-style:italic;
+    border:1px dashed #DADADA;
+    font-family:ui-monospace,Menlo,monospace;
+  }
+
+  /* ---------- FOOTER ---------- */
+  .footer{
+    background:var(--red-dark);
+    color:#FFCCCC;
+    text-align:center;
+    padding:22px 24px;
+    font-family:'Saira',sans-serif;font-size:12px;letter-spacing:0.1em;
+    text-transform:uppercase;
+  }
+
+  /* ---------- TOAST ---------- */
+  .toast{
+    position:fixed;left:50%;bottom:32px;transform:translateX(-50%) translateY(20px);
+    background:#1A1A1A;color:#fff;padding:14px 22px;border-radius:999px;
+    font-family:'Saira',sans-serif;font-weight:600;font-size:14px;
+    opacity:0;pointer-events:none;transition:opacity .2s, transform .2s;
+    z-index:100;
+    box-shadow:0 12px 30px rgba(0,0,0,0.25);
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* responsive */
+  @media (max-width: 900px){
+    .nav{gap:20px;padding:14px 18px;flex-wrap:wrap}
+    .nav-links{gap:24px}
+    .kit-row{grid-template-columns:1fr;gap:32px}
+    .story-content{grid-template-columns:1fr;min-height:auto;padding:60px 24px 60px}
+    .story-text{grid-column:1;margin:0 auto}
+    .story-bg{position:relative;height:380px;background-position:center top;background-size:contain;background-color:var(--red)}
+    .section-story{background:var(--red)}
+    .map-wrap{grid-template-columns:1fr}
+    .info-grid{grid-template-columns:1fr}
+    .partners-grid{grid-template-columns:repeat(2,1fr)}
+    .countdown-row{gap:24px}
+    .cd-unit{min-width:80px}
+    .cd-unit .value{font-size:64px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" data-screen-label="Nav">
+  <div class="nav-links">
+    <a href="#informacoes" class="active">Informações</a>
+    <a href="#kit">Kit</a>
+    <a href="#percursos">Percursos</a>
+    <a href="#regulamento">Regulamento</a>
+  </div>
+  <button class="nav-cta" data-cta>Inscreva-se</button>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="informacoes" data-screen-label="01 Hero Aracaju">
+  <img src="assets-aracaju/hero.jpg" alt="Aracaju — Onde o nosso coração dá o primeiro passo. Rumo aos 40 anos." />
+</section>
+
+<!-- ============ DATE BAR ============ -->
+<section class="date-bar" data-screen-label="02 Date bar">
+  <span class="item">Aracaju</span>
+  <span class="dot"></span>
+  <span class="item">02 de Agosto</span>
+  <span class="dot"></span>
+  <span class="item">5KM e 10KM</span>
+</section>
+
+<!-- ============ KIT ============ -->
+<section class="section-kit" id="kit" data-screen-label="03 Kit & price">
+  <div class="kit-row">
+    <div class="kit-img">
+      <img src="assets-aracaju/camisa.png" alt="Kit do corredor: camisa, medalha e número de peito" />
+    </div>
+    <div class="kit-buttons">
+      <button class="price-pill" data-distance="5">
+        <span class="km">5KM</span>
+        <span class="label">por R$</span>
+        <span class="price">119,00</span>
+      </button>
+      <button class="price-pill" data-distance="10">
+        <span class="km">10KM</span>
+        <span class="label">por R$</span>
+        <span class="price">119,00</span>
+      </button>
+      <button class="kit-cta" data-cta>Inscreva-se agora</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="section-story" data-screen-label="04 Story">
+  <div class="story-bg"></div>
+  <div class="story-overlay"></div>
+  <div class="story-content">
+    <div class="story-text">
+      <p>Há 40 anos, nossa história começou com um sonho no interior do Maranhão. Hoje, como a terceira maior rede varejista do Brasil, sabemos que cada conquista só foi possível porque caminhamos lado a lado com você.</p>
+      <p>Para celebrar essas quatro décadas de parceria e confiança, queremos correr juntos!</p>
+      <p>O Circuito Mateus vai movimentar 7 cidades, conectadas pela energia do esporte e pelo orgulho da nossa trajetória.</p>
+      <div class="story-cta display display-up">Venha fazer parte desse marco.<br/>Afinal, somos um só coração!</div>
+      <div class="story-selo">
+        <!-- Selo Corrida Mateus stylised as inline SVG (designer file is transparent white) -->
+        <svg class="selo-mark" viewBox="0 0 220 90" xmlns="http://www.w3.org/2000/svg" aria-label="Corrida Mateus Circuito 2026">
+          <defs>
+            <path id="curve" d="M0,55 C40,15 80,15 110,55 C140,95 180,95 220,55" fill="none"/>
+          </defs>
+          <text font-family="Saira Condensed, sans-serif" font-style="italic" font-weight="800" font-size="14" fill="#FFFFFF" letter-spacing="2" text-anchor="middle">
+            <textPath href="#curve" startOffset="50%">CORRIDA</textPath>
+          </text>
+          <text x="110" y="62" text-anchor="middle"
+            font-family="Saira Condensed, sans-serif" font-style="italic" font-weight="900" font-size="40" fill="#FFFFFF" letter-spacing="-1">mateus</text>
+          <text x="110" y="82" text-anchor="middle"
+            font-family="Saira Condensed, sans-serif" font-style="italic" font-weight="700" font-size="11" fill="#FFFFFF" letter-spacing="6">CIRCUITO 2026</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COUNTDOWN ============ -->
+<section class="countdown" data-screen-label="05 Countdown">
+  <div class="countdown-label"><span>FALTAM</span></div>
+  <div class="countdown-row">
+    <div class="cd-unit"><div class="value" id="cd-days">00</div><div class="label">Dias</div></div>
+    <div class="cd-unit"><div class="value" id="cd-hours">00</div><div class="label">Horas</div></div>
+    <div class="cd-unit"><div class="value" id="cd-mins">00</div><div class="label">Min</div></div>
+  </div>
+</section>
+
+<!-- ============ MAP ============ -->
+<section class="section-map" id="percursos" data-screen-label="06 Mapa">
+  <div class="map-wrap">
+    <div class="map-title display display-up">Mapa</div>
+    <div class="map-panel">
+      <div class="map-route">
+        <span class="map-tab">5KM</span>
+        <div class="row"><strong>Largada:</strong> Av. Beira Mar, Aracaju</div>
+        <div class="map-loading"><span class="spinner"></span> Carregando</div>
+        <div class="row"><strong>Chegada:</strong> Av. Beira Mar, Aracaju</div>
+      </div>
+      <div class="map-route">
+        <span class="map-tab">10KM</span>
+        <div class="row"><strong>Largada:</strong> Av. Beira Mar, Aracaju</div>
+        <div class="map-loading"><span class="spinner"></span> Carregando</div>
+        <div class="row"><strong>Chegada:</strong> Av. Beira Mar, Aracaju</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INFO PROVA ============ -->
+<section class="section-info" id="regulamento" data-screen-label="07 Informações de Prova">
+  <div class="info-card">
+    <h2 class="info-title">Informações de Prova</h2>
+    <div class="info-grid" id="info-grid">
+
+      <div class="info-item-wrap">
+        <button class="info-item" data-panel="p-gerais">
+          <span class="chev"></span>
+          <span>Informações Gerais</span>
+        </button>
+      </div>
+      <div class="info-item-wrap">
+        <button class="info-item" data-panel="p-especiais">
+          <span class="chev"></span>
+          <span>Inscrições Especiais</span>
+        </button>
+      </div>
+      <div class="info-item-wrap">
+        <button class="info-item" data-panel="p-kit">
+          <span class="chev"></span>
+          <span>Retirada de Kit</span>
+        </button>
+      </div>
+      <div class="info-item-wrap">
+        <button class="info-item" data-panel="p-regul">
+          <span class="chev"></span>
+          <span>Regulamento</span>
+        </button>
+      </div>
+
+      <!-- Panels -->
+      <div class="info-panel" id="p-gerais">
+        <h4>Informações Gerais</h4>
+        <p><strong>Data:</strong> 02 de Agosto de 2026</p>
+        <p><strong>Local:</strong> Orla da Atalaia — Aracaju / SE</p>
+        <p><strong>Horário de largada:</strong> 5h30 (10KM) e 6h00 (5KM)</p>
+        <p><strong>Modalidades:</strong> Corrida individual 5KM e 10KM, classificação por faixa etária.</p>
+      </div>
+      <div class="info-panel" id="p-especiais">
+        <h4>Inscrições Especiais</h4>
+        <p>Idosos (60+) e PCD têm direito a desconto de 50% mediante apresentação de documento válido.</p>
+        <p>Colaboradores Mateus possuem condição exclusiva — utilize o cupom no momento da inscrição.</p>
+      </div>
+      <div class="info-panel" id="p-kit">
+        <h4>Retirada de Kit</h4>
+        <p><strong>Datas:</strong> 31 de Julho (10h às 20h) e 01 de Agosto (10h às 18h)</p>
+        <p><strong>Local:</strong> Mateus Supermercados — Av. Beira Mar, Aracaju / SE</p>
+        <p>Apresentar documento com foto e comprovante de inscrição. Retirada por terceiros mediante procuração simples.</p>
+      </div>
+      <div class="info-panel" id="p-regul">
+        <h4>Regulamento</h4>
+        <p>Inscrição individual e intransferível. Idade mínima: 16 anos (5KM) e 18 anos (10KM).</p>
+        <ul>
+          <li>Uso obrigatório do número de peito durante todo o percurso.</li>
+          <li>Hidratação a cada 2 km.</li>
+          <li>Premiação para os 3 primeiros colocados de cada categoria.</li>
+        </ul>
+      </div>
+    </div>
+    <button class="info-cta" data-cta>Inscreva-se já</button>
+  </div>
+</section>
+
+<!-- ============ PARTNERS ============ -->
+<section class="section-partners" data-screen-label="08 Parceiros">
+  <div class="partners-wrap">
+    <div class="partners-title">Marcas Parceiras</div>
+    <div class="partners-grid">
+      <div class="partner">logo parceiro</div>
+      <div class="partner">logo parceiro</div>
+      <div class="partner">logo parceiro</div>
+      <div class="partner">logo parceiro</div>
+      <div class="partner">logo parceiro</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" data-screen-label="09 Footer">
+  Powered by PisaSports &amp; Prensa Marketing Esportivo
+</footer>
+
+<div class="toast" id="toast">Inscrição aberta — redirecionando…</div>
+
+<script>
+  // ---------- Fix CSS background-image URLs with token ----------
+  if (window.__withT){
+    document.documentElement.style.setProperty('--bg-dots-url',  'url('+window.__withT('assets-aracaju/bg-dots.png')+')');
+    document.documentElement.style.setProperty('--corredora-url','url('+window.__withT('assets-aracaju/corredora.png')+')');
+  }
+
+  // ---------- Countdown ----------
+  // Race: 02 Aug 2026, 06:00 BRT (UTC-3)
+  const target = new Date('2026-08-02T06:00:00-03:00').getTime();
+  const pad = n => String(Math.max(0,n)).padStart(2,'0');
+  function tick(){
+    const now = Date.now();
+    let diff = Math.max(0, target - now);
+    const days = Math.floor(diff / (1000*60*60*24));
+    diff -= days * 1000*60*60*24;
+    const hours = Math.floor(diff / (1000*60*60));
+    diff -= hours * 1000*60*60;
+    const mins = Math.floor(diff / (1000*60));
+    document.getElementById('cd-days').textContent = pad(days);
+    document.getElementById('cd-hours').textContent = pad(hours);
+    document.getElementById('cd-mins').textContent = pad(mins);
+  }
+  tick(); setInterval(tick, 1000*30);
+
+  // ---------- Price pill selection ----------
+  const pills = document.querySelectorAll('.price-pill');
+  pills.forEach(p => p.addEventListener('click', () => {
+    pills.forEach(x => x.classList.remove('selected'));
+    p.classList.add('selected');
+  }));
+  // default selection
+  pills[0]?.classList.add('selected');
+
+  // ---------- Accordion (single open at a time) ----------
+  const items = document.querySelectorAll('.info-item');
+  const panels = document.querySelectorAll('.info-panel');
+  items.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.panel;
+      const panel = document.getElementById(id);
+      const open = btn.classList.contains('open');
+      items.forEach(b => b.classList.remove('open'));
+      panels.forEach(p => p.classList.remove('open'));
+      if (!open){
+        btn.classList.add('open');
+        panel.classList.add('open');
+        // place panel directly after its row visually by reordering
+        panel.style.order = '99';
+      }
+    });
+  });
+
+  // ---------- CTAs toast ----------
+  const toast = document.getElementById('toast');
+  let toastTimer;
+  document.querySelectorAll('[data-cta]').forEach(b => {
+    b.addEventListener('click', () => {
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+    });
+  });
+
+  // ---------- Active nav link on scroll ----------
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = ['informacoes','kit','percursos','regulamento']
+    .map(id => document.getElementById(id));
+  function syncNav(){
+    const y = window.scrollY + 120;
+    let activeId = sections[0]?.id;
+    for(const s of sections){
+      if(s && s.offsetTop <= y) activeId = s.id;
+    }
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#'+activeId);
+    });
+  }
+  window.addEventListener('scroll', syncNav, {passive:true});
+  syncNav();
+
+  // smooth anchor scroll
+  navLinks.forEach(a => a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href && href.startsWith('#')){
+      e.preventDefault();
+      const el = document.querySelector(href);
+      if (el){
+        window.scrollTo({top: el.offsetTop - 60, behavior:'smooth'});
+      }
+    }
+  }));
+</script>
+
+</body>
+</html>
