@@ -146,6 +146,9 @@
 
   .kit-cta{
     margin-top:6px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
     background:var(--blue);color:#fff;
     border-radius:999px;
     padding:16px 36px;
@@ -393,6 +396,9 @@
   .info-panel ul{margin:8px 0 8px 18px}
   .info-cta{
     margin-top:36px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
     background:var(--blue);color:#fff;
     border-radius:999px;padding:16px 50px;
     font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:800;
