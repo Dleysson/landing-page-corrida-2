@@ -83,7 +83,7 @@
     padding:28px 24px;
     text-align:center;
     display:flex;align-items:center;justify-content:center;gap:36px;
-    flex-wrap:wrap;
+    flex-wrap:nowrap;
   }
   .date-bar .item{
     font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:800;
@@ -477,6 +477,19 @@
     .countdown-row{gap:24px}
     .cd-unit{min-width:80px}
     .cd-unit .value{font-size:64px}
+    .date-bar{
+      gap:20px;
+      padding:18px 10px;
+    }
+    .date-bar .item{
+      font-size:clamp(16px,3.8vw,24px);
+      white-space:nowrap;
+    }
+    .date-bar .dot{
+      width:8px;
+      height:8px;
+      flex:0 0 8px;
+    }
   }
   @media (max-width: 640px){
     .section-kit{padding:34px 10px 42px}
