@@ -119,6 +119,8 @@
   }
   .kit-img img{
     max-width:480px;width:100%;
+    aspect-ratio:499/681;
+    object-fit:contain;
     filter:drop-shadow(0 25px 40px rgba(192,0,15,0.18));
   }
   .kit-buttons{
@@ -162,7 +164,12 @@
     background:var(--red);
     color:#fff;
     overflow:hidden;
-    min-height:680px;
+    line-height:0;
+  }
+  .section-story > img{
+    display:block;
+    width:100%;
+    height:auto;
   }
   .story-bg{
     position:absolute;inset:0;
@@ -446,7 +453,14 @@
   @media (max-width: 900px){
     .topbar{padding:22px 28px}
     .nav{gap:24px;font-size:13px}
-    .kit-row{grid-template-columns:1fr;gap:32px}
+    .kit-row{grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);gap:12px;align-items:center}
+    .kit-buttons{max-width:none}
+    .kit-img img{max-width:320px}
+    .price-pill{padding:10px 12px;gap:8px}
+    .price-pill .km{min-width:0;font-size:18px}
+    .price-pill .label{font-size:10px}
+    .price-pill .price{font-size:30px}
+    .kit-cta{padding:13px 18px;font-size:16px}
     .story-content{grid-template-columns:1fr;min-height:auto;padding:60px 24px 60px}
     .story-text{grid-column:1;margin:0 auto}
     .story-bg{position:relative;height:380px;background-position:center top;background-size:contain;background-color:var(--red)}
@@ -457,4 +471,14 @@
     .countdown-row{gap:24px}
     .cd-unit{min-width:80px}
     .cd-unit .value{font-size:64px}
+  }
+  @media (max-width: 640px){
+    .section-kit{padding:34px 10px 42px}
+    .kit-row{gap:8px}
+    .kit-img img{max-width:230px}
+    .price-pill{padding:9px 10px}
+    .price-pill .km{font-size:14px}
+    .price-pill .label{font-size:8px}
+    .price-pill .price{font-size:22px}
+    .kit-cta{font-size:13px;letter-spacing:0.05em}
   }

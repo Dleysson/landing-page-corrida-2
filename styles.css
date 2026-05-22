@@ -723,12 +723,63 @@ button {
     .hero-composite {
         height: 360px;
     }
+    .kit-row {
+        grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+        align-items: stretch;
+        padding: 16px 12px 0;
+        gap: 12px;
+    }
+    .kit-card {
+        margin: 0;
+        min-height: 0;
+        border-radius: 16px;
+        padding: 10px 8px;
+    }
+    .kit-card img {
+        max-height: 280px;
+    }
+    .city-aside .label {
+        text-align: left;
+        padding-left: 0;
+        margin-bottom: 6px;
+        font-size: 10px;
+        letter-spacing: 0.1em;
+    }
+    .city-panel {
+        border-radius: 16px;
+        padding: 12px 10px 10px 12px;
+        min-height: 0;
+    }
     .city-current {
-        font-size: 26px;
-        padding: 18px 22px;
+        width: 100%;
+        margin-left: 0;
+        font-size: 14px;
+        padding: 10px 12px;
+        gap: 8px;
+    }
+    .city-current .arrow {
+        width: 18px;
+        height: 18px;
+        flex: 0 0 18px;
     }
     .city-list li button {
-        font-size: 18px;
+        font-size: 11px;
+        padding: 6px 2px;
+        gap: 6px;
+    }
+    .city-list .bag {
+        width: 30px;
+        height: 22px;
+        flex: 0 0 30px;
+    }
+    .city-list .bag::before {
+        width: 9px;
+        height: 6px;
+        top: -4px;
+    }
+    .city-list .bag span {
+        font-size: 5px;
+        letter-spacing: 0.08em;
     }
     .cta-btn {
         font-size: 18px;
