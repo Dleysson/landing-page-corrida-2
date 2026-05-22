@@ -230,6 +230,20 @@
       'noopener'
     );
   }
+
+  // smooth anchor scroll
+  document.querySelectorAll('.nav a').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var href = a.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        var el = document.querySelector(href);
+        if (el) {
+          window.scrollTo({top: el.offsetTop - 60, behavior: 'smooth'});
+        }
+      }
+    });
+  });
 </script>
 </body>
 </html>
