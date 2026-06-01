@@ -577,6 +577,9 @@ button {
     align-items: center;
     padding: 38px 0;
 }
+.partner-row:empty {
+    display: none;
+}
 .partner-slot {
     height: 60px;
     display: flex;

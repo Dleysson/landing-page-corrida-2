@@ -426,6 +426,7 @@
   .partners-grid{
     display:grid;grid-template-columns:repeat(5,1fr);gap:20px;
   }
+  .partners-grid:empty{display:none}
   .partner{
     aspect-ratio:3/2;background:#F6F6F6;border-radius:8px;
     display:flex;align-items:center;justify-content:center;
