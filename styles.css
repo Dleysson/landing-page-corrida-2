@@ -311,42 +311,45 @@ button {
 }
 .city-list .bag {
     position: relative;
-    width: 48px;
-    height: 34px;
-    flex: 0 0 48px;
+    width: 26px;
+    height: 24px;
+    flex: 0 0 26px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1.2px solid #c9c9c9;
-    border-radius: 4px;
+    border: 1px solid #c9c9c9;
+    border-radius: 3px;
     color: #c9c9c9;
     transition:
         color 0.15s,
         border-color 0.15s;
 }
 .city-list .bag::before {
-    /* bag handle */
+    /* cadeado — arco superior */
     content: "";
     position: absolute;
     top: -6px;
     left: 50%;
     transform: translateX(-50%);
-    width: 14px;
-    height: 10px;
-    border: 1.2px solid currentColor;
+    width: 10px;
+    height: 8px;
+    border: 1px solid currentColor;
     border-bottom: 0;
-    border-radius: 9px 9px 0 0;
+    border-radius: 6px 6px 0 0;
     background: transparent;
 }
-.city-list .bag span {
-    font-family: "Barlow Condensed", sans-serif;
-    font-style: italic;
-    font-weight: 700;
-    font-size: 7px;
-    line-height: 1;
-    letter-spacing: 0.12em;
-    text-align: center;
-    white-space: nowrap;
+.city-list .bag::after {
+    /* cadeado — fechadura (sem texto) */
+    content: "";
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2.5px;
+    height: 5px;
+    border: 1px solid currentColor;
+    border-radius: 1px;
+    background: transparent;
 }
 
 /* ---------- STORY SECTION ---------- */
@@ -771,18 +774,18 @@ button {
         gap: 6px;
     }
     .city-list .bag {
-        width: 30px;
-        height: 22px;
-        flex: 0 0 30px;
+        width: 20px;
+        height: 19px;
+        flex: 0 0 20px;
     }
     .city-list .bag::before {
-        width: 9px;
+        width: 8px;
         height: 6px;
         top: -4px;
     }
-    .city-list .bag span {
-        font-size: 5px;
-        letter-spacing: 0.08em;
+    .city-list .bag::after {
+        width: 2px;
+        height: 4px;
     }
     .cta-btn {
         font-size: 18px;
