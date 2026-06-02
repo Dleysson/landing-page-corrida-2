@@ -552,54 +552,19 @@ button {
 /* ---------- PARTNERS / FOOTER ---------- */
 .partners {
     background: #fff;
-    padding: 64px 64px 100px;
+    padding: 0;
 }
 .partners-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-}
-.partners h3 {
-    font-family: "Barlow", sans-serif;
-    font-style: italic;
-    font-weight: 700;
-    font-size: 18px;
-    letter-spacing: 0.12em;
-    color: #888;
-    text-transform: uppercase;
-    margin: 0 0 18px;
-}
-.partners hr {
-    border: 0;
-    border-top: 1px solid #c6c6c6;
+    max-width: none;
+    width: 100%;
     margin: 0;
 }
-.partner-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 64px;
-    align-items: center;
-    padding: 38px 0;
-}
-.partner-row:empty {
-    display: none;
-}
-.partner-slot {
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #c2c2c2;
-    font-family: "Barlow Condensed", sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    background: repeating-linear-gradient(
-        135deg,
-        #f4f4f4 0 8px,
-        #fafafa 8px 16px
-    );
-    border-radius: 4px;
+.partners-banner {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
 .legal {
@@ -703,7 +668,7 @@ button {
         width: 520px;
     }
     .partners {
-        padding: 48px 28px;
+        padding: 0;
     }
     .legal {
         padding: 22px 28px;
@@ -808,9 +773,5 @@ button {
     }
     .mslide.xl {
         width: 360px;
-    }
-    .partner-row {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
     }
 }
