@@ -552,19 +552,41 @@ button {
 /* ---------- PARTNERS / FOOTER ---------- */
 .partners {
     background: #f3f3f3;
-    padding: 48px 64px 64px;
+    padding: 64px 64px 72px;
 }
 .partners-inner {
-    max-width: 1024px;
+    max-width: 1080px;
     width: 100%;
     margin: 0 auto;
 }
-.partners-banner {
-    display: block;
-    width: 100%;
-    max-width: 920px;
+.partners-title {
+    font-family: "Barlow", sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8a8a8a;
+    margin: 0 0 36px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #dcdcdc;
+}
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    gap: 40px;
+}
+.partner-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.partner-logo img {
+    width: auto;
+    max-width: 100%;
+    max-height: 110px;
     height: auto;
-    margin: 0 auto;
 }
 
 .legal {
@@ -668,7 +690,14 @@ button {
         width: 520px;
     }
     .partners {
-        padding: 32px 24px 40px;
+        padding: 44px 24px 52px;
+    }
+    .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px 24px;
+    }
+    .partner-logo img {
+        max-height: 88px;
     }
     .legal {
         padding: 22px 28px;
