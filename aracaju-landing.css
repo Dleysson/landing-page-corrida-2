@@ -430,7 +430,7 @@
     aspect-ratio:3/2;padding:22px;
   }
   .partner-logo img{
-    width:auto;max-width:100%;max-height:96px;height:auto;object-fit:contain;
+    width:auto;max-width:100%;max-height:108px;height:auto;object-fit:contain;
   }
 
   /* ---------- FOOTER ---------- */
@@ -475,7 +475,7 @@
     .section-partners{padding:44px 24px 52px}
     .partners-grid{grid-template-columns:repeat(2,1fr);gap:18px}
     .partner-logo{padding:16px}
-    .partner-logo img{max-height:72px}
+    .partner-logo img{max-height:80px}
     .countdown-row{gap:24px}
     .cd-unit{min-width:80px}
     .cd-unit .value{font-size:64px}
