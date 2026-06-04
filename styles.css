@@ -574,19 +574,22 @@ button {
 .partners-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    align-items: center;
-    gap: 40px;
+    align-items: stretch;
+    gap: 28px;
 }
 .partner-logo {
     display: flex;
     align-items: center;
     justify-content: center;
+    aspect-ratio: 3 / 2;
+    padding: 22px;
 }
 .partner-logo img {
     width: auto;
     max-width: 100%;
-    max-height: 110px;
+    max-height: 96px;
     height: auto;
+    object-fit: contain;
 }
 
 .legal {
@@ -694,10 +697,13 @@ button {
     }
     .partners-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 32px 24px;
+        gap: 18px;
+    }
+    .partner-logo {
+        padding: 16px;
     }
     .partner-logo img {
-        max-height: 88px;
+        max-height: 72px;
     }
     .legal {
         padding: 22px 28px;
