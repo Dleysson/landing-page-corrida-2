@@ -809,4 +809,24 @@ button {
     .mslide.xl {
         width: 360px;
     }
+    .partners {
+        padding: 36px 18px 44px;
+    }
+    .partners-title {
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        margin: 0 0 22px;
+        padding-bottom: 12px;
+        text-align: center;
+    }
+    .partners-grid {
+        gap: 10px 14px;
+    }
+    .partner-logo {
+        aspect-ratio: 16 / 10;
+        padding: 12px 14px;
+    }
+    .partner-logo img {
+        max-height: 62px;
+    }
 }
