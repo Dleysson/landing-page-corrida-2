@@ -189,23 +189,11 @@ button {
     justify-content: center;
     min-height: 470px;
 }
-.kit-preview-frame {
-    width: 340px;
-    height: 420px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    margin: 0 auto;
-    padding-bottom: 4px;
-}
 .kit-card img {
-    display: block;
+    max-width: 100%;
+    max-height: 420px;
     width: auto;
-    height: 400px;
-    max-width: none;
-    object-fit: contain;
-    object-position: center bottom;
-    transform-origin: center bottom;
+    filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.28));
 }
 .city-aside {
     position: relative;
@@ -315,37 +303,11 @@ button {
         background 0.15s,
         transform 0.12s;
 }
-.city-list li button.city-option {
-    cursor: pointer;
-    color: #888;
-}
-.city-list li button.city-option:hover {
-    color: #555;
-    background: #fbfbfb;
-}
 .city-list li:last-child button {
     border-bottom: 0;
 }
-.city-list li button:not(.city-option):hover {
+.city-list li button:hover {
     background: #fbfbfb;
-}
-.city-list .city-pin {
-    width: 22px;
-    height: 22px;
-    flex: 0 0 22px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #a8a8a8;
-    transition: color 0.15s;
-}
-.city-list .city-pin svg {
-    width: 18px;
-    height: 18px;
-    display: block;
-}
-.city-list li button.city-option:hover .city-pin {
-    color: #666;
 }
 .city-list .bag {
     position: relative;
@@ -779,18 +741,8 @@ button {
         border-radius: 16px;
         padding: 10px 8px;
     }
-    .kit-preview-frame {
-        width: 100%;
-        max-width: 300px;
-        height: 300px;
-        padding-bottom: 2px;
-    }
     .kit-card img {
-        height: 280px;
-        width: auto;
-        max-width: none;
-        object-fit: contain;
-        object-position: center;
+        max-height: 280px;
     }
     .city-aside .label {
         text-align: left;
@@ -820,15 +772,6 @@ button {
         font-size: 11px;
         padding: 6px 2px;
         gap: 6px;
-    }
-    .city-list .city-pin {
-        width: 18px;
-        height: 18px;
-        flex: 0 0 18px;
-    }
-    .city-list .city-pin svg {
-        width: 14px;
-        height: 14px;
     }
     .city-list .bag {
         width: 20px;

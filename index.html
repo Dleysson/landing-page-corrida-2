@@ -70,27 +70,65 @@
     >
       <div class="kit-row">
         <div class="kit-card">
-          <div class="kit-preview-frame">
-            <img
-              id="kit-preview-img"
-              data-img="assets-aracaju/camisa.png"
-              alt="Kit do corredor: camisa, medalha e número de peito"
-            />
-          </div>
+          <img
+            data-img="assets-aracaju/camisa.png"
+            alt="Kit do corredor: camisa, medalha e número de peito"
+          />
         </div>
 
         <aside class="city-aside" aria-label="Selecione sua cidade">
           <div class="label">SELECIONE SUA CIDADE</div>
 
           <div class="city-panel">
-            <button class="city-current" type="button" id="city-current-btn">
+            <button
+              class="city-current"
+              type="button"
+              onclick="openCity('Aracaju')"
+            >
               <span class="arrow" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6V6z" /></svg>
               </span>
-              <span class="city-current-label">ARACAJU</span>
+              <span>ARACAJU</span>
             </button>
 
-            <ul class="city-list" id="city-list"></ul>
+            <ul class="city-list">
+              <li>
+                <button type="button" disabled>
+                  <span class="bag" aria-hidden="true"></span>
+                  EM BREVE
+                </button>
+              </li>
+              <li>
+                <button type="button" disabled>
+                  <span class="bag" aria-hidden="true"></span>
+                  EM BREVE
+                </button>
+              </li>
+              <li>
+                <button type="button" disabled>
+                  <span class="bag" aria-hidden="true"></span>
+                  EM BREVE
+                </button>
+              </li>
+              <li>
+                <button type="button" disabled>
+                  <span class="bag" aria-hidden="true"></span>
+                  EM BREVE
+                </button>
+              </li>
+              <li>
+                <button type="button" disabled>
+                  <span class="bag" aria-hidden="true"></span>
+                  EM BREVE
+                </button>
+              </li>
+              <li>
+                <button type="button" disabled>
+                  <span class="bag" aria-hidden="true"></span>
+                  EM BREVE
+                </button>
+              </li>
+            </ul>
           </div>
         </aside>
       </div>
@@ -335,14 +373,6 @@
           openWithToken("aracaju-landing.html");
           return;
         }
-        if (name === "Balsas") {
-          openWithToken("balsas-landing.html");
-          return;
-        }
-        if (name === "São Luís") {
-          openWithToken("sao-luis-landing.html");
-          return;
-        }
         var slug = name
           .toLowerCase()
           .normalize("NFD")
@@ -350,142 +380,6 @@
           .replace(/\s+/g, "-");
         openWithToken("cidade.html", { cidade: name, slug: slug });
       }
-
-      var CITY_ORDER = ["Aracaju", "Balsas", "São Luís"];
-      var CITIES = {
-        Aracaju: {
-          label: "ARACAJU",
-          kit: "assets-aracaju/camisa.png",
-          page: "aracaju-landing.html",
-        },
-        Balsas: {
-          label: "BALSAS",
-          kit: "assets/assets-balsas/CAMISAS.png",
-          page: "balsas-landing.html",
-        },
-        "São Luís": {
-          label: "SÃO LUÍS",
-          kit: "assets/assets-sao-luis/CAMISAS.png",
-          page: "sao-luis-landing.html",
-        },
-      };
-      var selectedCity = "Aracaju";
-      var KIT_REF_SIZE = { w: 504, h: 636, contentCenterY: 318 };
-      var KIT_CANVAS = {
-        Aracaju: { w: 499, h: 632, contentCenterY: 315 },
-        Balsas: { w: 504, h: 636, contentCenterY: 318 },
-        "São Luís": { w: 507, h: 638, contentCenterY: 319 },
-      };
-
-      function getKitBoxHeight() {
-        return window.matchMedia("(max-width: 640px)").matches ? 280 : 400;
-      }
-
-      function getKitRefWidth(boxH) {
-        return KIT_REF_SIZE.w * (boxH / KIT_REF_SIZE.h);
-      }
-
-      function getKitContentOffsetY(cityName, boxH) {
-        var city = KIT_CANVAS[cityName];
-        var refY =
-          KIT_REF_SIZE.contentCenterY * (boxH / KIT_REF_SIZE.h);
-        var cityY = city.contentCenterY * (boxH / city.h);
-        return refY - cityY;
-      }
-
-      function applyKitSizing(img, cityName) {
-        function fit() {
-          var nw = img.naturalWidth;
-          var nh = img.naturalHeight;
-          if (!nw || !nh) return;
-
-          var boxH = getKitBoxHeight();
-          var baseW = nw * (boxH / nh);
-          var refW = getKitRefWidth(boxH);
-          var scale = refW / baseW;
-          var offsetY =
-            getKitContentOffsetY(cityName, boxH) +
-            (CITIES[cityName].kitExtraOffsetY || 0) * (boxH / 400);
-
-          img.style.height = boxH + "px";
-          img.style.width = baseW + "px";
-
-          var parts = [];
-          if (Math.abs(offsetY) > 0.5) {
-            parts.push("translateY(" + offsetY + "px)");
-          }
-          if (Math.abs(scale - 1) > 0.01) {
-            parts.push("scale(" + scale + ")");
-          }
-          img.style.transform = parts.length ? parts.join(" ") : "none";
-        }
-
-        if (img.complete && img.naturalWidth) fit();
-        else img.onload = fit;
-      }
-
-      function renderCitySelector() {
-        var city = CITIES[selectedCity];
-        var currentBtn = document.getElementById("city-current-btn");
-        currentBtn.querySelector(".city-current-label").textContent = city.label;
-        currentBtn.onclick = function () {
-          openWithToken(city.page);
-        };
-
-        var kitImg = document.getElementById("kit-preview-img");
-        var suf = window.__ASSET_SUFFIX || "";
-        kitImg.dataset.img = city.kit;
-        kitImg.onload = null;
-        kitImg.src = city.kit + suf;
-        delete kitImg.dataset.retried;
-        applyKitSizing(kitImg, selectedCity);
-
-        var list = document.getElementById("city-list");
-        list.innerHTML = "";
-
-        CITY_ORDER.forEach(function (name) {
-          if (name === selectedCity) return;
-          var li = document.createElement("li");
-          var btn = document.createElement("button");
-          btn.type = "button";
-          btn.className = "city-option";
-          btn.innerHTML =
-            '<span class="city-pin" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg></span>' +
-            CITIES[name].label;
-          btn.addEventListener("click", function () {
-            selectCity(name);
-          });
-          li.appendChild(btn);
-          list.appendChild(li);
-        });
-
-        for (var i = 0; i < 4; i++) {
-          var liSoon = document.createElement("li");
-          var btnSoon = document.createElement("button");
-          btnSoon.type = "button";
-          btnSoon.disabled = true;
-          btnSoon.innerHTML =
-            '<span class="bag" aria-hidden="true"></span>EM BREVE';
-          liSoon.appendChild(btnSoon);
-          list.appendChild(liSoon);
-        }
-      }
-
-      function selectCity(name) {
-        if (!CITIES[name]) return;
-        selectedCity = name;
-        renderCitySelector();
-      }
-
-      renderCitySelector();
-
-      window.addEventListener("resize", function () {
-        applyKitSizing(
-          document.getElementById("kit-preview-img"),
-          selectedCity,
-        );
-      });
-
       function openRegulamento() {
         window.open(
           "https://docs.google.com/document/d/1vyiTW-yA6n1QUhxHi6Zz62eFKvEd8j-rzrjcPM2lE9c/edit?tab=t.0#heading=h.asb5441n9ddl",

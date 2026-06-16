@@ -93,15 +93,6 @@
   .date-bar .dot{
     width:10px;height:10px;border-radius:50%;background:var(--red);display:inline-block;
   }
-  .date-bar--image{
-    padding:0;
-    line-height:0;
-  }
-  .date-bar--image img{
-    width:100%;
-    height:auto;
-    display:block;
-  }
 
   /* ---------- KIT SECTION ---------- */
   .section-kit{
@@ -128,7 +119,7 @@
   }
   .kit-img img{
     max-width:480px;width:100%;
-    aspect-ratio:499/632;
+    aspect-ratio:499/681;
     object-fit:contain;
     filter:drop-shadow(0 25px 40px rgba(192,0,15,0.18));
   }
