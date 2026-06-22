@@ -611,16 +611,20 @@ button {
 }
 .partners-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(20, minmax(0, 1fr));
     align-items: stretch;
-    gap: 28px;
+    gap: 28px 24px;
 }
 .partner-logo {
     display: flex;
     align-items: center;
     justify-content: center;
+    grid-column: span 5;
     aspect-ratio: 3 / 2;
     padding: 22px;
+}
+.partner-logo:nth-child(n + 5) {
+    grid-column: span 4;
 }
 .partner-logo img {
     width: auto;
@@ -736,6 +740,10 @@ button {
     .partners-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 18px;
+    }
+    .partner-logo,
+    .partner-logo:nth-child(n + 5) {
+        grid-column: auto;
     }
     .partner-logo {
         padding: 16px;

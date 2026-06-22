@@ -150,15 +150,22 @@
     <!-- ============ MAP ============ -->
     <section class="section-map" id="percursos" data-screen-label="06 Mapa">
       <div class="map-wrap">
-        <div class="map-title display display-up">Mapa</div>
+        <div class="map-title display display-up">Mapas</div>
         <div class="map-panel">
           <div class="map-route">
             <span class="map-tab">5KM</span>
             <div class="row">
               <strong>Largada:</strong> Mix Mateus - Santa Monica. - Aracaju
             </div>
-            <div class="map-loading">
-              <span class="spinner"></span> Carregando
+            <div class="map-embed">
+              <div
+                class="strava-embed-placeholder"
+                data-embed-type="route"
+                data-embed-id="3504115241867997568"
+                data-style="standard"
+                data-from-embed="false"
+                data-token="dWU9myUFvtzSam_VzY8SOsC26x27qGyK1UCQb-sju1g"
+              ></div>
             </div>
             <div class="row">
               <strong>Chegada:</strong> Mix Mateus - Santa Monica. - Aracaju
@@ -169,8 +176,15 @@
             <div class="row">
               <strong>Largada:</strong> Mix Mateus - Santa Monica. - Aracaju
             </div>
-            <div class="map-loading">
-              <span class="spinner"></span> Carregando
+            <div class="map-embed">
+              <div
+                class="strava-embed-placeholder"
+                data-embed-type="route"
+                data-embed-id="3504115241037497728"
+                data-style="standard"
+                data-from-embed="false"
+                data-token="atmaQQcp_-k6nJ0eoQwtG6GPzEb7LgM5JZs1Wp5uVcc"
+              ></div>
             </div>
             <div class="row">
               <strong>Chegada:</strong> Mix Mateus - Santa Monica. - Aracaju
@@ -283,6 +297,9 @@
             <img src="assets/parceiros/pilao.png" alt="Pilão" />
           </div>
           <div class="partner-logo">
+            <img src="assets/parceiros/marata.png" alt="Maratá" />
+          </div>
+          <div class="partner-logo">
             <img src="assets/parceiros/omo.png" alt="Omo" />
           </div>
           <div class="partner-logo">
@@ -308,6 +325,7 @@
 
     <div class="toast" id="toast">Inscrição aberta — redirecionando…</div>
 
+    <script src="https://strava-embeds.com/embed.js"></script>
     <script>
       // ---------- Fix CSS background-image URLs with token ----------
       if (window.__withT) {
