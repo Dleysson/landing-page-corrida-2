@@ -222,10 +222,14 @@
             </button>
           </div>
           <div class="info-item-wrap">
-            <button class="info-item" data-panel="p-regul">
+            <a
+              class="info-item"
+              href="assets/docs/regulamento-mateus-etapa-aracaju-2026.pdf"
+              download
+            >
               <span class="chev"></span>
               <span>Regulamento</span>
-            </button>
+            </a>
           </div>
 
           <!-- Panels -->
@@ -252,22 +256,6 @@
           <div class="info-panel" id="p-kit">
             <h4>Retirada de Kit</h4>
             <p>Em breve</p>
-          </div>
-          <div class="info-panel" id="p-regul">
-            <h4>Regulamento</h4>
-            <p>
-              Inscrição individual e intransferível. Idade mínima: 16 anos (5KM)
-              e 18 anos (10KM).
-            </p>
-            <ul>
-              <li>
-                Uso obrigatório do número de peito durante todo o percurso.
-              </li>
-              <li>Hidratação a cada 2 km.</li>
-              <li>
-                Premiação para os 3 primeiros colocados de cada categoria.
-              </li>
-            </ul>
           </div>
         </div>
         <a
@@ -375,6 +363,7 @@
       items.forEach((btn) => {
         btn.addEventListener("click", () => {
           const id = btn.dataset.panel;
+          if (!id) return;
           const panel = document.getElementById(id);
           const open = btn.classList.contains("open");
           items.forEach((b) => b.classList.remove("open"));

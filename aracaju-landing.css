@@ -380,6 +380,7 @@
     cursor:pointer;
     transition:transform .15s, box-shadow .15s, background .15s;
     text-align:left;
+    text-decoration:none;
     width:100%;
   }
   .info-item:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(0,0,0,0.12)}
