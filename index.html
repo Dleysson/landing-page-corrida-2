@@ -357,14 +357,6 @@
           openWithToken("balsas-landing.html");
           return;
         }
-        if (name === "São Luís") {
-          openWithToken("sao-luis-landing.html");
-          return;
-        }
-        if (name === "Teresina") {
-          openWithToken("teresina-landing.html");
-          return;
-        }
         var slug = name
           .toLowerCase()
           .normalize("NFD")
@@ -373,11 +365,12 @@
         openWithToken("cidade.html", { cidade: name, slug: slug });
       }
 
-      var CITY_ORDER = ["Aracaju", "Balsas", "São Luís", "Teresina"];
+      var CITY_ORDER = ["Aracaju", "Balsas"];
       var CITIES = {
         Aracaju: {
           label: "ARACAJU",
           kit: "assets-aracaju/camisa.png",
+          kitExtraScale: 0.977,
           page: "aracaju-landing.html",
         },
         Balsas: {
@@ -385,24 +378,12 @@
           kit: "assets/assets-balsas/CAMISAS.png",
           page: "balsas-landing.html",
         },
-        "São Luís": {
-          label: "SÃO LUÍS",
-          kit: "assets/assets-sao-luis/CAMISAS.png",
-          page: "sao-luis-landing.html",
-        },
-        Teresina: {
-          label: "TERESINA",
-          kit: "assets/assets-teresina/CAMISAS.png",
-          page: "teresina-landing.html",
-        },
       };
       var selectedCity = "Aracaju";
       var KIT_REF_SIZE = { w: 504, h: 636, contentCenterY: 318 };
       var KIT_CANVAS = {
-        Aracaju: { w: 499, h: 632, contentCenterY: 315 },
+        Aracaju: { w: 499, h: 645, contentCenterY: 322 },
         Balsas: { w: 504, h: 636, contentCenterY: 318 },
-        "São Luís": { w: 507, h: 638, contentCenterY: 319 },
-        Teresina: { w: 507, h: 639, contentCenterY: 320 },
       };
 
       function getKitBoxHeight() {
@@ -430,7 +411,7 @@
           var boxH = getKitBoxHeight();
           var baseW = nw * (boxH / nh);
           var refW = getKitRefWidth(boxH);
-          var scale = refW / baseW;
+          var scale = (refW / baseW) * (CITIES[cityName].kitExtraScale || 1);
           var offsetY =
             getKitContentOffsetY(cityName, boxH) +
             (CITIES[cityName].kitExtraOffsetY || 0) * (boxH / 400);

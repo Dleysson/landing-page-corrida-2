@@ -132,6 +132,10 @@
     object-fit:contain;
     filter:drop-shadow(0 25px 40px rgba(192,0,15,0.18));
   }
+  .kit-img img.kit-aracaju{
+    width:auto;
+    max-height:608px;
+  }
   .kit-buttons{
     display:flex;flex-direction:column;gap:18px;
     align-items:flex-start;
@@ -494,6 +498,7 @@
     .section-story{background:var(--red)}
     .map-panel{grid-template-columns:1fr}
     .info-grid{grid-template-columns:1fr}
+    .kit-img img.kit-aracaju{max-height:404px}
     .section-partners{padding:44px 24px 52px}
     .partners-grid{grid-template-columns:repeat(2,1fr);gap:18px}
     .partner-logo,
@@ -521,6 +526,7 @@
     .section-kit{padding:34px 10px 42px}
     .kit-row{gap:8px}
     .kit-img img{max-width:230px}
+    .kit-img img.kit-aracaju{max-height:290px}
     .price-pill{padding:9px 10px}
     .price-pill .km{font-size:14px}
     .price-pill .label{font-size:8px}
