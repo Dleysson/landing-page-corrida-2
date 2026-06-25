@@ -357,6 +357,14 @@
           openWithToken("balsas-landing.html");
           return;
         }
+        if (name === "São Luís") {
+          openWithToken("sao-luis-landing.html");
+          return;
+        }
+        if (name === "Teresina") {
+          openWithToken("teresina-landing.html");
+          return;
+        }
         var slug = name
           .toLowerCase()
           .normalize("NFD")
@@ -365,7 +373,7 @@
         openWithToken("cidade.html", { cidade: name, slug: slug });
       }
 
-      var CITY_ORDER = ["Aracaju", "Balsas"];
+      var CITY_ORDER = ["Aracaju", "Balsas", "São Luís", "Teresina"];
       var CITIES = {
         Aracaju: {
           label: "ARACAJU",
@@ -377,12 +385,24 @@
           kit: "assets/assets-balsas/CAMISAS.png",
           page: "balsas-landing.html",
         },
+        "São Luís": {
+          label: "SÃO LUÍS",
+          kit: "assets/assets-sao-luis/CAMISAS.png",
+          page: "sao-luis-landing.html",
+        },
+        Teresina: {
+          label: "TERESINA",
+          kit: "assets/assets-teresina/CAMISAS.png",
+          page: "teresina-landing.html",
+        },
       };
       var selectedCity = "Aracaju";
       var KIT_REF_SIZE = { w: 504, h: 636, contentCenterY: 318 };
       var KIT_CANVAS = {
         Aracaju: { w: 499, h: 632, contentCenterY: 315 },
         Balsas: { w: 504, h: 636, contentCenterY: 318 },
+        "São Luís": { w: 507, h: 638, contentCenterY: 319 },
+        Teresina: { w: 507, h: 639, contentCenterY: 320 },
       };
 
       function getKitBoxHeight() {
