@@ -111,6 +111,7 @@
           <a
             class="kit-cta"
             href="https://www.evenyx.com/corrida-mateus-circuito-40-anos-teresina"
+            data-signup-trigger
             target="_blank"
             rel="noopener noreferrer"
             >Inscreva-se agora</a
@@ -248,6 +249,7 @@
         <a
           class="info-cta"
           href="https://www.evenyx.com/corrida-mateus-circuito-40-anos-teresina"
+          data-signup-trigger
           target="_blank"
           rel="noopener noreferrer"
           >Inscreva-se já</a
@@ -299,6 +301,41 @@
     </footer>
 
     <div class="toast" id="toast">Inscrição aberta — redirecionando…</div>
+
+    <div class="signup-modal" id="signup-modal" hidden>
+      <div class="signup-modal__backdrop" data-signup-close></div>
+      <div
+        class="signup-modal__card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="signup-modal-title"
+      >
+        <button
+          class="signup-modal__close"
+          type="button"
+          aria-label="Fechar"
+          data-signup-close
+        >
+          ×
+        </button>
+        <h3 id="signup-modal-title">Escolha sua inscrição</h3>
+        <p>Selecione a modalidade de venda para continuar.</p>
+        <div class="signup-modal__actions">
+          <a
+            href="https://www.evenyx.com/corrida-mateus-circuito-40-anos-teresina"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Venda Geral</a
+          >
+          <a
+            href="https://www.evenyx.com/corrida-mateus-circuito-40-anos-teresina-colaborador"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Venda Colaborador</a
+          >
+        </div>
+      </div>
+    </div>
 
     <script>
       // ---------- Fix CSS background-image URLs with token ----------
@@ -371,6 +408,30 @@
           clearTimeout(toastTimer);
           toastTimer = setTimeout(() => toast.classList.remove("show"), 1800);
         });
+      });
+
+      const signupModal = document.getElementById("signup-modal");
+      function openSignupModal() {
+        signupModal.hidden = false;
+        document.body.classList.add("modal-open");
+      }
+      function closeSignupModal() {
+        signupModal.hidden = true;
+        document.body.classList.remove("modal-open");
+      }
+      document.querySelectorAll("[data-signup-trigger]").forEach((trigger) => {
+        trigger.addEventListener("click", (event) => {
+          event.preventDefault();
+          openSignupModal();
+        });
+      });
+      document.querySelectorAll("[data-signup-close]").forEach((trigger) => {
+        trigger.addEventListener("click", closeSignupModal);
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !signupModal.hidden) {
+          closeSignupModal();
+        }
       });
 
       // ---------- Active nav link on scroll ----------
