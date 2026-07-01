@@ -380,21 +380,25 @@
           kit: "assets-aracaju/camisa.png",
           kitExtraScale: 0.977,
           page: "aracaju-landing.html",
+          regulamento: "assets/docs/regulamento-mateus-etapa-aracaju-2026.pdf",
         },
         Balsas: {
           label: "BALSAS",
           kit: "assets/assets-balsas/CAMISAS.png",
           page: "balsas-landing.html",
+          regulamento: "assets/docs/regulamento-mateus-etapa-balsas-2026.pdf",
         },
         "São Luís": {
           label: "SÃO LUÍS",
           kit: "assets/assets-sao-luis/CAMISAS.png",
           page: "sao-luis-landing.html",
+          regulamento: "assets/docs/regulamento-mateus-etapa-sao-luis-2026.pdf",
         },
         Teresina: {
           label: "TERESINA",
           kit: "assets/assets-teresina/CAMISAS.png",
           page: "teresina-landing.html",
+          regulamento: "assets/docs/regulamento-mateus-etapa-teresina-2026.pdf",
         },
       };
       var selectedCity = "Aracaju";
@@ -516,11 +520,15 @@
       });
 
       function openRegulamento() {
-        window.open(
-          "https://docs.google.com/document/d/1vyiTW-yA6n1QUhxHi6Zz62eFKvEd8j-rzrjcPM2lE9c/edit?tab=t.0#heading=h.asb5441n9ddl",
-          "_blank",
-          "noopener",
-        );
+        var city = CITIES[selectedCity];
+        if (!city || !city.regulamento) return;
+        var suf = window.__ASSET_SUFFIX || "";
+        var link = document.createElement("a");
+        link.href = city.regulamento + suf;
+        link.download = "";
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
       }
 
       // smooth anchor scroll
