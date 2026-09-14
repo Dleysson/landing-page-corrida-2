@@ -37,6 +37,9 @@ SOURCES = {
     "Regulamento Fortaleza 2026.pdf": Path(
         "/Users/eduardoklein/Downloads/REGULAMENTO-FORTALEZA-2026-v1.docx"
     ),
+    "Regulamento Salvador 2026.pdf": Path(
+        "/Users/eduardoklein/Downloads/REGULAMENTO-SALVADOR-2026-v3.docx"
+    ),
 }
 
 
