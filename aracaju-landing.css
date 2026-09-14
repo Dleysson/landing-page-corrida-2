@@ -330,7 +330,7 @@
   }
   .map-route:last-child{border-bottom:1px solid rgba(192,0,15,0.16);margin-bottom:0;padding-bottom:24px}
   .map-route .row{display:flex;gap:8px;align-items:flex-start;margin:6px 0}
-  .map-route .row strong{font-weight:700;color:#3A1A1A}
+  .map-route .row b{font-weight:700;color:#3A1A1A}
   .map-embed{margin:14px 0;overflow:hidden;width:100%}
   .map-embed .strava-embed-placeholder,
   .map-embed iframe,
