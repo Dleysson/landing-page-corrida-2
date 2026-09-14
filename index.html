@@ -371,6 +371,10 @@
           openWithToken("fortaleza-landing.html");
           return;
         }
+        if (name === "Salvador") {
+          openWithToken("salvador-landing.html");
+          return;
+        }
         var slug = name
           .toLowerCase()
           .normalize("NFD")
@@ -386,6 +390,7 @@
         "Teresina",
         "Belém",
         "Fortaleza",
+        "Salvador",
       ];
       var CITIES = {
         Aracaju: {
@@ -425,6 +430,11 @@
           page: "fortaleza-landing.html",
           regulamento: "assets/docs/Regulamento Fortaleza 2026.pdf",
         },
+        Salvador: {
+          label: "SALVADOR",
+          kit: "assets/assets-salvador/CAMISAS.png",
+          page: "salvador-landing.html",
+        },
       };
       var selectedCity = "Aracaju";
       var KIT_REF_SIZE = { w: 504, h: 636, contentCenterY: 318 };
@@ -435,6 +445,7 @@
         Teresina: { w: 507, h: 639, contentCenterY: 320 },
         Belém: { w: 488, h: 640, contentCenterY: 320 },
         Fortaleza: { w: 500, h: 636, contentCenterY: 318 },
+        Salvador: { w: 496, h: 638, contentCenterY: 319 },
       };
 
       function getKitBoxHeight() {
@@ -522,7 +533,7 @@
           list.appendChild(li);
         });
 
-        for (var i = 0; i < 4; i++) {
+        for (var i = 0; i < 3; i++) {
           var liSoon = document.createElement("li");
           var btnSoon = document.createElement("button");
           btnSoon.type = "button";
