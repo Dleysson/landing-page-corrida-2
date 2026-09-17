@@ -38,7 +38,7 @@ SOURCES = {
         "/Users/eduardoklein/Downloads/REGULAMENTO-FORTALEZA-2026-v1.docx"
     ),
     "Regulamento Salvador 2026.pdf": Path(
-        "/Users/eduardoklein/Downloads/REGULAMENTO-SALVADOR-2026-v3.docx"
+        "/Users/eduardoklein/Downloads/REGULAMENTO-SALVADOR-2026-v4.docx"
     ),
 }
 
@@ -116,13 +116,24 @@ def build_pdf(docx_path: Path, pdf_path: Path) -> None:
 
 
 def main() -> int:
+    targets = sys.argv[1:]
+    processed = 0
     for filename, source in SOURCES.items():
+        if targets and filename not in targets and source.name not in targets:
+            continue
         if not source.exists():
-            print(f"Missing source: {source}", file=sys.stderr)
-            return 1
+            if targets:
+                print(f"Missing source: {source}", file=sys.stderr)
+                return 1
+            print(f"Skipping missing source: {source}", file=sys.stderr)
+            continue
         target = OUT_DIR / filename
         build_pdf(source, target)
         print(f"Wrote {target}")
+        processed += 1
+    if not processed:
+        print("No files converted.", file=sys.stderr)
+        return 1
     return 0
 
 
