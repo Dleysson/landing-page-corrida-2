@@ -570,17 +570,6 @@
           li.appendChild(btn);
           list.appendChild(li);
         });
-
-        for (var i = 0; i < 3; i++) {
-          var liSoon = document.createElement("li");
-          var btnSoon = document.createElement("button");
-          btnSoon.type = "button";
-          btnSoon.disabled = true;
-          btnSoon.innerHTML =
-            '<span class="bag" aria-hidden="true"></span>EM BREVE';
-          liSoon.appendChild(btnSoon);
-          list.appendChild(liSoon);
-        }
       }
 
       function selectCity(name) {
